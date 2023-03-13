@@ -9,6 +9,11 @@
     0px 3px 4px rgba(0, 0, 0, 0.12),
     0px 2px 4px rgba(0, 0, 0, 0.14);
   border-radius: 4px;
+  cursor: pointer;
+}
+
+:host:hover {
+  transform: scale(1.1);
 }
 
 .character-image {
@@ -16,6 +21,7 @@
   height: 100%;
   background-size: cover;
   background-position: center;
+  border-radius: 4px 4px 0 0 ;
 }
 
 .character-info {

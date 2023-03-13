@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import LocalStorageService from 'src/app/shared/local-storage.service';
 
 @Component({
   selector: 'app-filter',
@@ -8,20 +9,22 @@ import { Component, OnInit } from '@angular/core';
 export class FilterComponent implements OnInit {
   // characters!: Character[];
   // productsFiltered!: Product[];
-  // productName!: string;
-  // @Output() inputEvent = new EventEmitter<Product[]>();
+  characterName!: string;
+  @Output() inputEvent = new EventEmitter<string>();
 
-  // constructor(private productsData: ProductsData) { }
+  constructor(private localStorageService: LocalStorageService) { }
 
   ngOnInit(): void {
+    this.characterName = this.localStorageService.get('filter');
     // this.products = this.productsData.get();
   }
 
-  // onInput() {
-  //   this.productsFiltered = this.products.filter((product) => {
-  //     return new RegExp(this.productName, "i").test(product.name);
-  //   });
-  //   this.inputEvent.emit(this.productsFiltered);
-  // }
+  onInput() {
+    /* this.productsFiltered = this.products.filter((product) => {
+      return new RegExp(this.productName, "i").test(product.name);
+    }); */
+    this.inputEvent.emit(this.characterName);
+    this.localStorageService.set('filter', this.characterName);
+  }
 
 }

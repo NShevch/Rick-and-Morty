@@ -8,6 +8,7 @@ import { CharactersListComponent } from './characters-list/characters-list.compo
 import { CharacterDetailsComponent } from './character-details/character-details.component';
 import { FilterComponent } from './characters-list/filter/filter.component';
 import { CharacterComponent } from './characters-list/character/character.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CharacterComponent } from './characters-list/character/character.compon
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

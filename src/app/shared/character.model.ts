@@ -3,20 +3,29 @@ export class Character {
   public name: string;
   public species: string;
   public image: string;
-  public gender: string;
-  public status: string;
-  public origin: string;
-  public type: string;
+  public gender?: string;
+  public status?: string;
+  public origin?: string;
+  public type?: string;
 
-  constructor({ id, name, species, image, gender, status, origin, type }: {
+  constructor({
+    id,
+    name,
+    species,
+    image,
+    gender = '',
+    status = '',
+    origin = '',
+    type = ''
+  }: {
     id: number,
     name: string,
     species: string,
     image: string,
-    gender: string,
-    status: string,
-    origin: string,
-    type: string,
+    gender?: string,
+    status?: string,
+    origin?: string,
+    type?: string,
   }) {
     this.id = id;
     this.name = name;

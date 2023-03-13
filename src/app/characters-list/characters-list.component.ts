@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Character } from '../shared/character.model';
 import { CharactersService } from '../shared/characters.service';
 
@@ -8,16 +9,17 @@ import { CharactersService } from '../shared/characters.service';
   templateUrl: './characters-list.component.html',
   styleUrls: ['./characters-list.component.scss']
 })
-export class CharactersListComponent implements OnInit {
+export class CharactersListComponent implements OnInit, OnDestroy {
   characters: Character[] = [];
+  gettingDataSubscription!: Subscription;
 
   constructor(
     private charactersService: CharactersService,
     private router: Router) {}
 
   ngOnInit() {
-    this.charactersService.getData().subscribe({
-      next: (data:any) => {
+    this.gettingDataSubscription = this.charactersService.getData().subscribe({
+      next: (data: Character[]) => {
         this.characters = data;
         console.log(data)
       },
@@ -27,9 +29,13 @@ export class CharactersListComponent implements OnInit {
     });
   }
 
-  onCharacterClick() {
+  onCharacterClick(character: Character) {
     console.log('onCharacterClick')
-    this.router.navigate(['detail']);
+    this.router.navigate(['detail/' + character.id]);
+  }
+
+  ngOnDestroy() {
+    this.gettingDataSubscription.unsubscribe();
   }
 
 }

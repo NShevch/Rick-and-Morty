@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: 'Roboto';
+  padding: 76px 24px;
 }
 
 .go-back {
@@ -21,9 +23,119 @@
 .go-back:hover {
   text-decoration: underline;
 }
-
 .go-back-image {
   height: 16px;
   width: 16px;
   margin-right: 12px;
+}
+
+.character-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 413px;
+}
+
+.image {
+  height: 300px;
+  width: 300px;
+  // left: 557px;
+  // right: 583px;
+  // top: 76px;
+  border: 5px solid #F2F2F7;
+  border-radius: 150px;
+  background-position: center;
+  background-size: contain;
+}
+
+.no-character {
+  font-size: 30px;
+  margin-top: 80px;
+  color: rgb(172, 0, 0);
+}
+
+.name {
+  font-size: 48px;
+  line-height: 56px;
+  text-align: center;
+  color: #081F32;
+  margin: 16px 0 48px;
+}
+
+.info {
+  width: 100%;
+}
+
+.info-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.info-header {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  color: #8E8E93;
+  text-align: center;
+  margin-bottom: 57px;
+}
+
+.info-list-item {
+  height: 64px;
+  width: 100%;
+  padding: 9px 16px 12px;
+  // padding: 9px 0 12px;
+  // border-bottom: 1px solid hsl(0deg 0% 93%);
+}
+.info-list-item::after {
+  content: '';
+  display: block;
+  position: relative;
+  top: 12px;
+  background-color: hsl(0deg 0% 93%);
+  height: 1px;
+}
+
+.header {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  color: #081F32;
+}
+
+.description {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  color: #6E798C;
+}
+
+@media (max-width: 500px) {
+  :host {
+    padding: 124px 24px;
+  }
+  .go-back {
+    top: 27px;
+    left: 28px;
+  }
+  .character-wrap {
+    width: 100%;
+  }
+  .image {
+    width: 150px;
+    height: 150px;
+  }
+  .name {
+    font-size: 32px;
+    line-height: 38px;
+    margin: 34px 0;
+  }
+  .info-header {
+    margin-bottom: 16px;
+    text-align: left;
+  }
 }

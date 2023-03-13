@@ -1,0 +1,10 @@
+<div class="title">
+  <img src="/assets/images/characters-list/title.png" alt="Rick and Morty">
+</div>
+<app-filter></app-filter>
+<div class="characters-list-wrap">
+  <app-character
+    *ngFor="let character of characters"
+    [character] = character
+    (click)="onCharacterClick()"></app-character>
+</div>

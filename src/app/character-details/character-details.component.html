@@ -1,0 +1,38 @@
+<div
+  class="go-back"
+  (click)="onGoBackClick()">
+  <img
+    class="go-back-image"
+    src="/assets/images/characters-details/arrow_back_24px.png"
+    alt="arrow back">
+  GO BACK
+</div>
+<div
+  class="image"
+  [ngStyle]="{backgroundImage: 'url(' + character.image + ')'}"></div>
+<div class="name"></div>
+<div class="info">
+  <div class="info-header">Informations</div>
+  <div class="info-list">
+    <div class="info-list-item gender">
+      <span class="header">Gender</span>
+      <span class="description">{{ character.gender }}</span>
+    </div>
+    <div class="info-list-item status">
+      <span class="header">Status</span>
+      <span class="description">{{ character.status }}</span>
+    </div>
+    <div class="info-list-item specie">
+      <span class="header">Specie</span>
+      <span class="description">{{ character.species }}</span>
+    </div>
+    <div class="info-list-item origin">
+      <span class="header">Origin</span>
+      <span class="description">{{ character.origin }}</span>
+    </div>
+    <div class="info-list-item type">
+      <span class="header">Type</span>
+      <span class="description">{{ character.type }}</span>
+    </div>
+  </div>
+</div>

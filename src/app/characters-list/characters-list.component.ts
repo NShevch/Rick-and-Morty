@@ -23,34 +23,30 @@ export class CharactersListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.gettingDataSubscription = this.charactersService.getData().subscribe({
       next: (data: Character[]) => {
-        const sortedByName = data.sort((
-          character1: Character,
-          character2: Character
-        ) => {
-          return character1.name < character2.name ? -1 : 1;
-        });
-        this.characters = sortedByName;
-        console.log(data)
+        const sortedByName = data.sort(this.sortingDataByName);
+        const charactersListFiltered = this.localStorageService.get('charactersListFiltered');
+        this.characters = charactersListFiltered || sortedByName;
+        this.charactersService.setCharactersFullList(sortedByName);
       },
       error: (err) => {
         console.error('While downloading characters: ' + err);
       },
     });
-    this.localStorageService.set('characters', this.characters);
+  }
+
+  sortingDataByName(character1: Character, character2: Character) {
+    return character1.name < character2.name ? -1 : 1;
   }
 
   onCharacterClick(character: Character) {
-    console.log('onCharacterClick')
     this.router.navigate(['detail/' + character.id]);
   }
 
   onFilter(name: string) {
-    console.log(name)
-    console.log(this.characters)
-    this.characters = this.characters.filter((character) => {
+    this.characters = this.charactersService.getCharactersFullList().filter((character) => {
       return new RegExp(name, "i").test(character.name);
     });
-    console.log(this.characters)
+    this.localStorageService.set('charactersListFiltered', this.characters);
   }
 
   ngOnDestroy() {

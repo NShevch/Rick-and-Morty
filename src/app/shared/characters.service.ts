@@ -6,9 +6,19 @@ import { Character } from './character.model';
 @Injectable({
   providedIn: 'root'
 })
+
 export class CharactersService {
+  private charactersFullList: Character[] = [];
 
   constructor(private http: HttpClient) {}
+
+  getCharactersFullList() {
+    return this.charactersFullList;
+  }
+
+  setCharactersFullList(list: Character[]) {
+    this.charactersFullList = list;
+  }
 
   getData() {
     return this.http.get('https://rickandmortyapi.com/api/character').pipe(

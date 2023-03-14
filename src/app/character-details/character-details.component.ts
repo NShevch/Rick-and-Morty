@@ -24,7 +24,6 @@ export class CharacterDetailsComponent implements OnInit {
     this.gettingCharacterSubscription = this.charactersService.getSpecificCharacter(id).subscribe({
       next: (data: Character) => {
         this.character = data;
-        console.log(data)
       },
       error: (err) => {
         console.error('While downloading character details: ' + err);
